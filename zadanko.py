@@ -8,10 +8,13 @@ for i in range (0, 14):
 
 m = 0
 
+print("nie były losowane numery: ", end="")
+
 for n in range (0, 14):
     if kl[n] > m:
         m = kl[n]
         l = n
+    if kl[n] == 0:
+        print(n+1, end=", ")
 
-print("najczęściej losowany był numer ", l+1, ", był losowany ", m, "razy")
-
+print("\nnajczęściej losowany był numer ", l+1, ", był losowany ", m, "razy")
