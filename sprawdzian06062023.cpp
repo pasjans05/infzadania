@@ -13,21 +13,6 @@ ofstream wynik2("sum5.txt");
 ofstream wynik3("odp.txt");
 ofstream wynik4("licz53.txt");
 
-int bin2dec(unsigned long long bin)
-{
-    int i = 0;
-    int p; //aktualna liczba
-    int dec = 0;
-    while (bin > 0)
-    {
-        p = bin % 10;
-        if (p == 1) dec += pow(2, i);
-        i++;
-        bin /= 10;
-    }
-    return dec;
-}
-
 string dec2quin(int dec)
 {
     int a = 0;
@@ -43,19 +28,21 @@ string dec2quin(int dec)
 
 int main()
 {
-    unsigned long long binar;
+    //zadanie 1.1:
+    string binar;
     int decim;
     string quinar;
     for (int i = 0; i < 100; i++)
     {
         plik >> binar;
-        decim = bin2dec(binar);
+        decim = stoi(binar, nullptr, 2);
         quinar = dec2quin(decim);
         //cout << binar << "\t" << decim << "\t" << quinar << endl;
         wynik << quinar << endl;
     }
     plik.close();
     wynik.close();
+    //zadanie 1.2:
     plik.open("licz5.txt");
     string quin1;
     string quin2;
@@ -75,13 +62,14 @@ int main()
     }
     plik.close();
     wynik2.close();
+    //zadanie 1.3:
     plik.open("licz5.txt");
     string liczba5;
     string minliczba;
     int min = 0;
     int n = 0;
     bool spr;
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++) //sprawdzamy jak jest najmniejsza liczba znaków
     {
         plik >> liczba5;
         n = 0;
@@ -99,7 +87,7 @@ int main()
     }
     plik.close();
     plik.open("licz5.txt");
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++) //wypisujemy liczby o najmniejszej liczbie znaków
     {
         plik >> liczba5;
         n = 0;
@@ -119,6 +107,7 @@ int main()
     }
     plik.close();
     wynik3.close();
+    //zadanie 1.4:
     plik.open("licz5.txt");
     for (int i = 0; i < 100; i++)
     {
@@ -140,6 +129,7 @@ int main()
     }
     plik.close();
     wynik4.close();
+    //sortowanie pliku "licz53.txt" za pomocą wektora
     plik.open("licz53.txt");
     vector<int> numery;
     int numer;
